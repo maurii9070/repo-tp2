@@ -8,13 +8,33 @@ html {
 	font-family: sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana;
 }
 /* Header */
-header {
+header {	
 	height: 200px;
 	background: url(../images/mascotas.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
-	max-height: 475px;
+	max-height: 475px;	
+}
+.titulo-centralizado{
+	text-align: center;
+	font-size: 35px;
+	margin-bottom: 5%;
+}
+.consejo{
+	margin-bottom: 30px;
+}
+ .consejo .titulo-consejo, .consejo p{
+	margin-bottom: 16px;
+}
+.titulo-consejo{
+	font-style: italic;
+	text-align: center;
+}
+.imagen-consejo{
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
 }
 .logo {
 	display: none;
