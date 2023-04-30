@@ -2,11 +2,12 @@
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="../static/css/estilos.css" />
 		<title>Pet service | Paseos</title>
 	</head>
 	<body>
 		<header>
-			<div>
+			<div class="logo">
 				<img
 					src="../static/images/huella.png"
 					alt="huella-logo-principal"
@@ -16,20 +17,24 @@
 				/>
 			</div>
 
-			<h1>Servicio de Mascotas</h1>
+			<h1 class="titulo-principal">Servicio de Mascotas</h1>
 
 			<nav>
-				<ul>
-					<li><a href="index.html"> Inicio</a></li>
-					<li><a href="productos.html"> Productos</a></li>
-					<li><a href="consejosdesalud.html"> Consejos de Salud</a></li>
-					<li><a href="serviciodepaseos.html"> Servicio de paseos</a></li>
-					<li><a href="sucursales.html"> Sucursales</a></li>
-					<li><a href="contacto.html"> Contactános</a></li>
+				<ul class="nav-links">
+					<li class="link"><a href="./index.html">Inicio</a></li>
+					<li class="link"><a href="./productos.html">Productos</a></li>
+					<li class="link">
+						<a href="./consejosdesalud.html">Consejos de Salud</a>
+					</li>
+					<li class="link">
+						<a href="./serviciodepaseos.html">Servicio de paseos</a>
+					</li>
+					<li class="link"><a href="./sucursales.html">Sucursales</a></li>
+					<li class="link"><a href="./contacto.html">Contáctanos</a></li>
 				</ul>
 			</nav>
 		</header>
-		<section>
+		<section class="contenido-principal">
 			<h2>Servicios de Paseos</h2>
 			<h3>
 				A continuación te presentamos los días y horarios disponibles de
@@ -69,16 +74,16 @@
 		<aside>
 			<h4>Opiniones de usuarios</h4>
 			<ul>
-				<li>Por Mes</li>
-				<ul>
+				<li class="mes-titulo">Por Mes</li>
+				<ul class="meses">
 					<li><a href="#">Abril</a></li>
 					<li><a href="#">Marzo</a></li>
 					<li><a href="#">Febrero</a></li>
 					<li><a href="#">Enero</a></li>
 				</ul>
 
-				<li>De años anteriores</li>
-				<ul>
+				<li class="anio-titulo">De años anteriores</li>
+				<ul class="anios">
 					<li><a href="#">2022</a></li>
 					<li><a href="#">2021</a></li>
 					<li><a href="#">2020</a></li>
@@ -86,9 +91,10 @@
 				</ul>
 			</ul>
 		</aside>
+
 		<footer>
 			<p>
-				Copyright 2023 - Pets - Diseñado por Grupo 25 - Jujuy - República
+				Copyright 2023 - Pets - Diseñado por Grupo 25 – Jujuy – República
 				Argentina
 			</p>
 		</footer>
