@@ -39,34 +39,51 @@
 
 		<!-- CONTACTO -->
 		<section class="contenido-principal">
+			<h2 class="titulo-contacto">Contáctenos</h2>
 			<section>
-				<h2>Contáctenos</h2>
-				<p>3915 Av. General Belgrano, 388-4999999</p>
-				<p>Lunes a Viernes: 9:00 a.m a 8:00 p.m</p>
-				<p>Sábado a Domingo: 9:00 a.m a 12:30 p.m</p>
-				<p>contactos@mail.com.ar</p>
-				<ul>
-					<li><a href="#">Facebook</a></li>
-					<li><a href="#">Instagram</a></li>
-					<li><a href="#">Twitter</a></li>
-				</ul>
+				<div class="contacto">
+					<p>3915 Av. General Belgrano, 388-4999999</p>
+					<p>Lunes a Viernes: 9:00 a.m a 8:00 p.m</p>
+					<p>Sábado a Domingo: 9:00 a.m a 12:30 p.m</p>
+					<p>contactos@mail.com.ar</p>
+					<ul class="redes-sociales">
+						<li><a href="#">Facebook</a></li>
+						<li><a href="#">Instagram</a></li>
+						<li><a href="#">Twitter</a></li>
+					</ul>
+				</div>
 				<hr />
-				<form>
-					<label for="nombre">Nombre</label>
-					<input type="text" name="nombre" id="nombre" />
-					<br /><br />
-					<label for="email">Email</label>
-					<input type="email" name="email" id="email" />
-					<br /><br />
-					<label for="ciudad">Ciudad</label>
-					<input type="text" name="ciudad" id="ciudad" />
-					<br /><br />
-					<label for="mensaje">Mensaje</label>
-					<textarea name="mensaje" id="mensaje" cols="30" rows="10"></textarea>
-					<br /><br />
-					<button type="submit">Enviar</button>
+				<form class="formulario">
+					<div class="campos">
+						<label for="nombre">Nombre:</label>
+						<input type="text" name="nombre" id="nombre" />
+					</div>
+
+					<div class="campos">
+						<label for="email">Email:</label>
+						<input type="email" name="email" id="email" />
+					</div>
+
+					<div class="campos">
+						<label for="ciudad">Ciudad:</label>
+						<input type="text" name="ciudad" id="ciudad" />
+					</div>
+					<div class="campos">
+						<label for="mensaje">Mensaje:</label>
+						<textarea
+							name="mensaje"
+							id="mensaje"
+							cols="30"
+							rows="10"
+						></textarea>
+					</div>
+
+					<div class="campos">
+						<button type="submit">Enviar</button>
+					</div>
 				</form>
 			</section>
+		</section>
 		</section>
 
 		<aside>
