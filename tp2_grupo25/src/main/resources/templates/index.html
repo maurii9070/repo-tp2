@@ -1,39 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://thymeleaf.org">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="stylesheet" href="../static/css/estilos.css" />
+		<link rel="stylesheet" th:href="@{css/estilos.css}" />
 		<title>Pet Service</title>
 	</head>
 	<body>
-		<header>
-			<div class="logo">
-				<img
-					src="../static/images/huella.png"
-					alt="huella-logo-principal"
-					title="Huella"
-					width="40"
-					height="40"
-				/>
-			</div>
-
-			<h1 class="titulo-principal">Servicio de Mascotas</h1>
-
-			<nav>
-				<ul class="nav-links">
-					<li class="link"><a href="./index.html">Inicio</a></li>
-					<li class="link"><a href="./productos.html">Productos</a></li>
-					<li class="link">
-						<a href="./consejosdesalud.html">Consejos de Salud</a>
-					</li>
-					<li class="link">
-						<a href="./serviciodepaseos.html">Servicio de paseos</a>
-					</li>
-					<li class="link"><a href="./sucursales.html">Sucursales</a></li>
-					<li class="link"><a href="./contacto.html">Contáctanos</a></li>
-				</ul>
-			</nav>
-		</header>
+		<header th:replace="~{layouts/header :: header}"></header>
 
 		<!-- MAIN -->
 		<section class="contenido-principal">
@@ -43,9 +16,8 @@
 				<h3>Objetivo general</h3>
 				<!-- objetivo 1 -->
 				<p>
-					Diseñar, implementar y administrar un sitio web que facilite
-					transacciones comerciales entre los usuarios en torno al cuidado y el
-					bienestar de las mascotas, obteniendo una ganancia por cada
+					Diseñar, implementar y administrar un sitio web que facilite transacciones comerciales entre los
+					usuarios en torno al cuidado y el bienestar de las mascotas, obteniendo una ganancia por cada
 					transacción que se concrete.
 				</p>
 			</article>
@@ -55,22 +27,13 @@
 				<h3>Objetivos específicos</h3>
 				<!-- objetivo 2 -->
 				<ul>
+					<li>Ayudar a los usuarios a encontrar cuidadores de mascotas idóneos y responsables</li>
 					<li>
-						Ayudar a los usuarios a encontrar cuidadores de mascotas idóneos y
-						responsables
+						Garantizar a los cuidadores de mascotas el pago de sus servicios mediante una plataforma segura y
+						confiable.
 					</li>
-					<li>
-						Garantizar a los cuidadores de mascotas el pago de sus servicios
-						mediante una plataforma segura y confiable.
-					</li>
-					<li>
-						Promocionar los servicios de Pet Service a través de redes sociales,
-						internet, y voz a voz.
-					</li>
-					<li>
-						Conservar una base de datos de clientes relacionados con los
-						servicios de mascotas.
-					</li>
+					<li>Promocionar los servicios de Pet Service a través de redes sociales, internet, y voz a voz.</li>
+					<li>Conservar una base de datos de clientes relacionados con los servicios de mascotas.</li>
 				</ul>
 			</article>
 		</section>
@@ -97,10 +60,7 @@
 		</aside>
 
 		<footer>
-			<p>
-				Copyright 2023 - Pets - Diseñado por Grupo 25 – Jujuy – República
-				Argentina
-			</p>
+			<p>Copyright 2023 - Pets - Diseñado por Grupo 25 – Jujuy – República Argentina</p>
 		</footer>
 	</body>
 </html>
