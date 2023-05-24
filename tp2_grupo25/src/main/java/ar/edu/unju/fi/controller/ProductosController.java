@@ -13,4 +13,10 @@ public class ProductosController {
         
         return "productos";
     }
+    
+    @GetMapping("/nuevo-producto")
+    public String nuevoProductoPage(){
+       // model.addAttribute("producto", new Producto());
+        return "nuevo_producto";
+    }
 }
