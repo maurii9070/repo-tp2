@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" th:href="@{css/estilos.css}" />
+		<title>Header</title>
+	</head>
+	<body>
+		<aside th:fragment="aside">
+			<h4>Opiniones de usuarios</h4>
+			<ul>
+				<li class="mes-titulo">Por Mes</li>
+				<ul class="meses">
+					<li><a href="#">Abril</a></li>
+					<li><a href="#">Marzo</a></li>
+					<li><a href="#">Febrero</a></li>
+					<li><a href="#">Enero</a></li>
+				</ul>
+
+				<li class="anio-titulo">De años anteriores</li>
+				<ul class="anios">
+					<li><a href="#">2022</a></li>
+					<li><a href="#">2021</a></li>
+					<li><a href="#">2020</a></li>
+					<li><a href="#">2019</a></li>
+				</ul>
+			</ul>
+		</aside>
+		
+			
+
+	</body>
+</html>
