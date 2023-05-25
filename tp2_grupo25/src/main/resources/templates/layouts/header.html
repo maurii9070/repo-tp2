@@ -4,14 +4,13 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" th:href="@{css/estilos.css}" />
 		<title>Header</title>
 	</head>
 	<body>
 		<header th:fragmet="header">
 			<div class="logo">
 				<img
-					th:src="@{images/huella.png}"
+					th:src="@{/images/huella.png}"
 					alt="huella-logo-principal"
 					title="Huella"
 					width="40"
@@ -24,7 +23,7 @@
 			<nav>
 				<ul class="nav-links">
 					<li class="link"><a href="./index.html">Inicio</a></li>
-					<li class="link"><a href="./productos.html">Productos</a></li>
+					<li class="link"><a th:href="@{/productos/listado}">Productos</a></li>
 					<li class="link">
 						<a href="./consejosdesalud.html">Consejos de Salud</a>
 					</li>

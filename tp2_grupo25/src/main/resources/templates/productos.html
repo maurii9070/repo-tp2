@@ -12,7 +12,7 @@
 
 		<!-- MAIN -->
 		<section class="contenido-principal">
-			 <a th:href="@{/productos/nuevo-producto}">Nuevo producto</a> 
+			<a th:href="@{/productos/nuevo-producto}" class="nuevo-producto"> <span>+</span> Nuevo producto</a>
 			<h2 class="titulo-centralizado">Productos en stock</h2>
 			<div class="productos">
 				<div class="producto">
@@ -84,13 +84,14 @@
 						Diseño novedoso - Resistente al agua - No tiene materiales toxicos - Antiestres
 					</p>
 				</div>
-			</div>
 
-			<section>
-				<ul th:each="prod : ${productos}">
-					<li th:text="${prod.nombre}"></li>
-				</ul>
-			</section>
+				<div class="producto" th:each="prod : ${productos}">
+					<p th:text="${prod.nombre}" class="titulo-producto"></p>
+					<p>Categoria: <span th:text="${prod.categoria}"></span></p>
+					<p>Descuento: $<span th:text="${prod.descuento}"></span></p>
+					<p>Precio Final: $<span th:text="${prod.calcularDescuento}"></span></p>
+				</div>
+			</div>
 		</section>
 
 		<aside th:replace="~{layouts/aside :: aside}"></aside>

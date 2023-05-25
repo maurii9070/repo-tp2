@@ -4,33 +4,60 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" th:href="@{css/estilos.css}" />
+		<link rel="stylesheet" th:href="@{/css/estilos.css}" />
 		<title>Nuevo producto</title>
 	</head>
 	<body>
-        <header th:replace="layouts/header :: header"></header>
+		<header th:replace="layouts/header :: header"></header>
 
-        <form th:action="@{/productos/guardar}" th:object="${producto}" method="post">
-            <label for="nombre">Nombre: </label>
-            <input type="text" name="nombre" id="nombre" th:field="{nombre}" />
+		<div class="contenedor-form">
+			<form
+				th:action="@{/productos/guardar}"
+				th:object="${producto}"
+				method="post"
+				class="form-nuevo-producto"
+			>
+				<div class="campos">
+					<label for="nombre">Nombre: </label>
+					<input type="text" name="nombre" id="nombre" th:field="*{nombre}" />
+				</div>
 
-            <label for="codigo">Codigo: </label>
-            <input type="number" name="codigo" id="codigo" th:field="{codigo}" />
+				<div class="campos">
+					<label for="codigo">Codigo: </label>
+					<input type="number" name="codigo" id="codigo" min="0" th:field="*{codigo}" />
+				</div>
 
-            <label for="precio">Precio: </label>
-            <input type="number" name="precio" id="precio" th:field="{precio}" />
+				<div class="campos">
+					<label for="precio">Precio: </label>
+					<input type="number" name="precio" id="precio" min="0" th:field="*{precio}" />
+				</div>
 
-            <label for="categoria">Categoria: </label>
-            <input type="text" name="categoria" id="categoriambre" th:field="{categoria}" />
+				<!-- <div class="campos">
+					<label for="categoria">Categoria: </label>
+					<input type="text" name="categoria" id="categoriambre" th:field="*{categoria}" />
+				</div> -->
+				<div class="campos">
+					<label for="categoria">Categoria: </label>
+					<select th:field="*{categoria}" name="categoria" id="categoria">
+						<option th:value="Higiene" th:text="Higiene"></option>
+						<option th:value="Alimento" th:text="Alimentos"></option>
+						<option th:value="Juguete" th:text="Juguete"></option>
+					</select>
+				</div>
 
-            <label for="descuento">Descuento: </label>
-            <input type="number" name="descuento" id="descuento" th:field="*{descuento}" />
+				<div class="campos">
+					<label for="descuento">Descuento: </label>
+					<input type="number" name="descuento" id="descuento" max="50" min="0" th:field="*{descuento}" />
+				</div>
 
-            <input type="submit" value="Agregar Producto" />
-        </form>
+				<div class="campos">
+					<input type="submit" value="Agregar Producto" />
+				</div>
+			</form>
+		</div>
 
-        <aside th:replace="layouts/aside :: aside"></aside>
+		<aside th:replace="layouts/aside :: aside"></aside>
 
-        <footer th:replace="layouts/footer :: footer"></footer>
-    </body>
+		<footer th:replace="layouts/footer :: footer"></footer>
+	</body>
 </html>

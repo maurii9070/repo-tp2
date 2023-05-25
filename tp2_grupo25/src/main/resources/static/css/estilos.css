@@ -20,6 +20,7 @@ header {
 	text-align: center;
 	font-size: 35px;
 	margin-bottom: 5%;
+	margin-top: 2rem;
 }
 .consejo {
 	margin-bottom: 30px;
@@ -37,12 +38,13 @@ header {
 	margin-right: auto;
 	display: block;
 }
-.titulo-services, .h3{
+.titulo-services,
+.h3 {
 	margin-bottom: 5%;
-	text-align: center;	
+	text-align: center;
 }
-.tabla-services{
-	text-align: center;	
+.tabla-services {
+	text-align: center;
 }
 .logo {
 	display: none;
@@ -109,7 +111,7 @@ header {
 
 /* Contenido Principal */
 .contenido-principal {
-	padding: 0 12px 0 12px;	
+	padding: 0 12px 0 12px;
 }
 
 .contenido-principal article {
@@ -363,3 +365,66 @@ footer {
 	}
 }
 /* Fin Productos */
+
+/* Formulario nuevo producto */
+
+.contenedor-form {
+	max-width: 460px;
+	padding: 0 16px;
+}
+@media (min-width: 768px) {
+	.contenedor-form {
+		grid-column: 2/7;
+	}
+}
+@media (min-width: 1024px) {
+	.contenedor-form {
+		grid-column: 3/7;
+	}
+}
+@media (min-width: 1280px) {
+	.contenedor-form {
+		grid-column: 4/9;
+	}
+}
+.form-nuevo-producto {
+	margin: 0 auto;
+}
+
+.form-nuevo-producto .campos {
+	margin-bottom: 0.8rem;
+	display: grid;
+	grid-template-columns: 100px auto;
+	align-items: center;
+}
+.campos input[type='text'],
+.campos input[type='number'],
+.campos select[name='categoria'] {
+	padding: 10px 5px;
+	border: 1px solid #c7c7c7;
+	border-radius: 3px;
+	outline: none;
+}
+
+.form-nuevo-producto input[type='submit'] {
+	grid-column: 1/3;
+	padding: 0.6rem 0;
+	border: none;
+	font-weight: bold;
+	background-color: #3e62ff;
+	color: #fff;
+	border-radius: 5px;
+}
+
+.nuevo-producto {
+	text-decoration: none;
+	background-color: #3e62ff;
+	font-weight: bold;
+	padding: 1rem 0.8rem;
+	border-radius: 3px;
+	color: #fff;
+	align-content: center;
+}
+.nuevo-producto span {
+	font-size: 1.5rem;
+}
