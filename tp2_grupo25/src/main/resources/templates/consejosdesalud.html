@@ -1,56 +1,27 @@
 <!DOCTYPE html>
-<html lang="es">
+<html xmlns:th="http://thymeleaf.org" lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="../static/css/estilos.css" />
+		<link rel="stylesheet" th:href="@{/css/estilos.css}" />
 		<title>Pet Service | Consejos de Salud</title>
 	</head>
 	<body>
-		<header>
-			<div class="logo">
-				<img
-					src="../static/images/huella.png"
-					alt="huella-logo-principal"
-					title="Huella"
-					width="40"
-					height="40"
-				/>
-				<hr />
-			</div>
-			<h1 class="titulo-principal">Servicio de Mascotas</h1>
-
-			<nav>
-				<ul class="nav-links">
-					<li class="link"><a href="./index.html">Inicio</a></li>
-					<li class="link"><a href="./productos.html">Productos</a></li>
-					<li class="link">
-						<a href="./consejosdesalud.html">Consejos de Salud</a>
-					</li>
-					<li class="link">
-						<a href="./serviciodepaseos.html">Servicio de paseos</a>
-					</li>
-					<li class="link"><a href="./sucursales.html">Sucursales</a></li>
-					<li class="link"><a href="./contacto.html">Contáctanos</a></li>
-				</ul>
-			</nav>
-		</header>
+		<header th:replace="~{layouts/header :: header}"></header>
 		<!-- Consejos de Salud -->
 		<section class="contenido-principal">
 			<h2 class="titulo-centralizado">Consejos de Salud</h2>
 			<div class="consejo">
 				<h3 class="titulo-consejo">Visitar regularmente el veterinario</h3>
 				<p>
-					En la primer visita de nuestra mascota al veterinario, este se
-					encargará de revisar su estadode salud y descartar cualquier
-					patología, además de establecer el plan de vacunación y escoger las
-					vacunas adecuadas para cada animal, según el riesgo de exposición a
-					ciertas enfermedades y la zona de residencia. Debido a esto, no existe
-					un calendario de vacunación único.
+					En la primer visita de nuestra mascota al veterinario, este se encargará de revisar su estadode
+					salud y descartar cualquier patología, además de establecer el plan de vacunación y escoger las
+					vacunas adecuadas para cada animal, según el riesgo de exposición a ciertas enfermedades y la zona
+					de residencia. Debido a esto, no existe un calendario de vacunación único.
 				</p>
 				<img
 					class="imagen-consejo"
-					src="../static/images/veterinario.jpg"
+					th:src="@{/images/veterinario.webp}"
 					alt="Visita-veterinario"
 					title="Visita al veterinario"
 					width="400"
@@ -60,20 +31,17 @@
 			<div class="consejo">
 				<h3 class="titulo-consejo">Proporcionarle una alimentación sana</h3>
 				<p>
-					Utilice alimentos saludables que cubran todas las necesidades
-					nutricionales de su mascota, aportando todos los elementos necesarios
-					para un correcto crecimiento y desarrollo de la mascota, desde sus
-					primeros años de vida hasta su etapa adulta. Tenga en cuenta que las
-					necesidades de su mascota van cambiando a lo largo de su vida, por lo
-					que deberá proporcionarle lo que el animal necesite dependiendo de su
-					estado fisiológico. Además es aconsejable repartir las comidas para
-					evitar sobrecargar al animal y que tenga así mejores digestiones.
-					Tenga siempre a su disposición agua fresca y limpia para que pueda
-					hidratarse con regularidad.
+					Utilice alimentos saludables que cubran todas las necesidades nutricionales de su mascota, aportando
+					todos los elementos necesarios para un correcto crecimiento y desarrollo de la mascota, desde sus
+					primeros años de vida hasta su etapa adulta. Tenga en cuenta que las necesidades de su mascota van
+					cambiando a lo largo de su vida, por lo que deberá proporcionarle lo que el animal necesite
+					dependiendo de su estado fisiológico. Además es aconsejable repartir las comidas para evitar
+					sobrecargar al animal y que tenga así mejores digestiones. Tenga siempre a su disposición agua
+					fresca y limpia para que pueda hidratarse con regularidad.
 				</p>
 				<img
 					class="imagen-consejo"
-					src="../static/images/alimentacion.jpg"
+					th:src="@{/images/alimentacion.jpg}"
 					alt="Alimentacion-sana"
 					title="Alimentacion sana"
 					width="400"
@@ -83,13 +51,12 @@
 			<div class="consejo">
 				<h3 class="titulo-consejo">No duescuide su limpieza</h3>
 				<p>
-					Deberá realizarle un aseo periodico para asi poder detectar y tomar
-					medidas necesarias en caso de tener parasitos externos (como pulgas,
-					garrapatas, etc...) y enfermedades de la piel.
+					Deberá realizarle un aseo periodico para asi poder detectar y tomar medidas necesarias en caso de
+					tener parasitos externos (como pulgas, garrapatas, etc...) y enfermedades de la piel.
 				</p>
 				<img
 					class="imagen-consejo"
-					src="../static/images/aseo.jpg"
+					th:src="@{/images/aseo.jpg}"
 					alt="Aseo-de-mascota"
 					title="Aseo de mascota"
 					width="400"
@@ -99,14 +66,13 @@
 			<div class="consejo">
 				<h3 class="titulo-consejo">Desparasite con frecuencia a su mascota.</h3>
 				<p>
-					La desparasitación de las mascotas debe llevarse a cabo antes de
-					iniciar el suministro de las vacuna, porque además de eliminar los
-					parásitos, el antiparasitario estimula las defensas y ayuda a que la
-					vacuna produzca un mejor efecto inmune en los animales.
+					La desparasitación de las mascotas debe llevarse a cabo antes de iniciar el suministro de las
+					vacuna, porque además de eliminar los parásitos, el antiparasitario estimula las defensas y ayuda a
+					que la vacuna produzca un mejor efecto inmune en los animales.
 				</p>
 				<img
 					class="imagen-consejo"
-					src="../static/images/perrro desparasitado.jpg"
+					th:src="@{/images/perro_desparasitado.jpeg}"
 					alt="Perro_desparasitado"
 					title="Perro desparacitado"
 					width="400"
@@ -114,22 +80,18 @@
 				/>
 			</div>
 			<div class="consejo">
-				<h3 class="titulo-consejo">
-					Evita los cambios bruscos de temperatura.
-				</h3>
+				<h3 class="titulo-consejo">Evita los cambios bruscos de temperatura.</h3>
 				<p>
-					Evita las altas temperaturas en verano, dale agua fresca y limpia
-					frecuentemente, evita los ejercicios intensos durante las horas de más
-					calor, no olvides a tu mascota dentro del coche y evita las
-					situaciones de estrés. Recuerda que con el calor los animales puede
-					que no tengan tanto apetito. En invierno, al haber bajas temperaturas
-					los animales necesitan ingerir más cantidad de energía por lo que
-					puede aumentar su apetito, así que reparte las comidas para evitar
-					sobrecargar su sistema digestivo.
+					Evita las altas temperaturas en verano, dale agua fresca y limpia frecuentemente, evita los
+					ejercicios intensos durante las horas de más calor, no olvides a tu mascota dentro del coche y evita
+					las situaciones de estrés. Recuerda que con el calor los animales puede que no tengan tanto apetito.
+					En invierno, al haber bajas temperaturas los animales necesitan ingerir más cantidad de energía por
+					lo que puede aumentar su apetito, así que reparte las comidas para evitar sobrecargar su sistema
+					digestivo.
 				</p>
 				<img
 					class="imagen-consejo"
-					src="../static/images/perrito con calor.jpg"
+					th:src="@{/images/perrito_con_calor.jpeg}"
 					alt="Perrito_con_calor"
 					title="Adopta no compres"
 					width="400"
@@ -138,32 +100,8 @@
 			</div>
 		</section>
 
-		<aside>
-			<h4>Opiniones de usuarios</h4>
-			<ul>
-				<li class="mes-titulo">Por Mes</li>
-				<ul class="meses">
-					<li><a href="#">Abril</a></li>
-					<li><a href="#">Marzo</a></li>
-					<li><a href="#">Febrero</a></li>
-					<li><a href="#">Enero</a></li>
-				</ul>
+		<aside th:replace="~{layouts/aside :: aside}"></aside>
 
-				<li class="anio-titulo">De años anteriores</li>
-				<ul class="anios">
-					<li><a href="#">2022</a></li>
-					<li><a href="#">2021</a></li>
-					<li><a href="#">2020</a></li>
-					<li><a href="#">2019</a></li>
-				</ul>
-			</ul>
-		</aside>
-
-		<footer>
-			<p>
-				Copyright 2023 - Pets - Diseñado por Grupo 25 – Jujuy – República
-				Argentina
-			</p>
-		</footer>
+		<footer th:replace="~{layouts/footer :: footer}"></footer>
 	</body>
 </html>
