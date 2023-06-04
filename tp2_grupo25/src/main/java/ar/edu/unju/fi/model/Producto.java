@@ -2,13 +2,33 @@ package ar.edu.unju.fi.model;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
+
 @Component
 public class Producto {
-	private String nombre;
+	// Agregando validaciones
+    @NotEmpty(message="Nombre no puede estar vacio")
+    private String nombre;
+
+    @Positive(message = "El codigo debe ser positivo")
     private int codigo;
+
+    @Positive(message = "El precio debe ser positivo")
     private float precio;
+
+    @NotBlank(message = "Debe seleccionar una categoria")
     private String categoria;
+
+    @Min(value = 0, message = "El valor minimo del descuento es 0")
+    @Max(value = 50, message = "El valor maximo del descuento es de %50")
+    @PositiveOrZero(message = "El descuento debe ser cero o positivo")
     private byte descuento;
+    
     public Producto() {
     	
     }
