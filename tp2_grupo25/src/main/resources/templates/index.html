@@ -1,49 +1,56 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="stylesheet" th:href="@{css/estilos.css}" />
-		<title>Pet Service</title>
-	</head>
-	<body>
-		<header th:replace="~{layouts/header :: header}"></header>
 
-		<!-- MAIN -->
-		<section class="contenido-principal">
-			<article>
-				<h2>Nuestros Objetivos</h2>
-				<!-- Titulo -->
-				<h3>Objetivo general</h3>
-				<!-- objetivo 1 -->
-				<p>
-					Diseñar, implementar y administrar un sitio web que facilite transacciones comerciales entre los
-					usuarios en torno al cuidado y el bienestar de las mascotas, obteniendo una ganancia por cada
-					transacción que se concrete.
-				</p>
-			</article>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{css/estilos.css}" />
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<title>Pet Service</title>
+</head>
 
-			<article>
-				<!-- Titulo -->
-				<h3>Objetivos específicos</h3>
-				<!-- objetivo 2 -->
-				<ul>
-					<li>Ayudar a los usuarios a encontrar cuidadores de mascotas idóneos y responsables</li>
-					<li>
-						Garantizar a los cuidadores de mascotas el pago de sus servicios mediante una plataforma segura y
-						confiable.
-					</li>
-					<li>Promocionar los servicios de Pet Service a través de redes sociales, internet, y voz a voz.</li>
-					<li>Conservar una base de datos de clientes relacionados con los servicios de mascotas.</li>
-				</ul>
-			</article>
-		</section>
+<body>
+	<header th:replace="~{layouts/header :: header}"></header>
 
-		<aside th:replace="~{layouts/aside :: aside}">
-			
-		</aside>
+	<!-- MAIN -->
+	<section class="contenido-principal">
+		<article>
+			<h2>Nuestros Objetivos</h2>
+			<!-- Titulo -->
+			<h3>Objetivo general</h3>
+			<!-- objetivo 1 -->
+			<p>
+				Diseñar, implementar y administrar un sitio web que facilite transacciones comerciales entre los
+				usuarios en torno al cuidado y el bienestar de las mascotas, obteniendo una ganancia por cada
+				transacción que se concrete.
+			</p>
+		</article>
 
-		<footer th:replace="~{layouts/footer :: footer}">
-			
-		</footer>
-	</body>
+		<article>
+			<!-- Titulo -->
+			<h3>Objetivos específicos</h3>
+			<!-- objetivo 2 -->
+			<ul>
+				<li>Ayudar a los usuarios a encontrar cuidadores de mascotas idóneos y responsables</li>
+				<li>
+					Garantizar a los cuidadores de mascotas el pago de sus servicios mediante una plataforma segura y
+					confiable.
+				</li>
+				<li>Promocionar los servicios de Pet Service a través de redes sociales, internet, y voz a voz.</li>
+				<li>Conservar una base de datos de clientes relacionados con los servicios de mascotas.</li>
+			</ul>
+		</article>
+	</section>
+
+	<aside th:replace="~{layouts/aside :: aside}">
+
+	</aside>
+
+	<footer th:replace="~{layouts/footer :: footer}">
+
+	</footer>
+
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
 </html>
