@@ -141,14 +141,15 @@ aside {
 aside h4 {
 	text-align: center;
 	margin-bottom: 8px;
+	font-size: 22px;
 }
 
-aside ul {
+aside nav {
 	margin-left: 36px;
 }
 
-aside ul .mes-titulo,
-aside ul .anio-titulo {
+aside nav .mes-titulo,
+aside nav .anio-titulo {
 	margin-bottom: 8px;
 }
 
