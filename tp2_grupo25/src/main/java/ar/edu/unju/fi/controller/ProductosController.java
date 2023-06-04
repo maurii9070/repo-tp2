@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -35,5 +36,48 @@ public class ProductosController {
         listaProductos.getProductos().add(producto); // Trae el arrayList y agrega el nuevo objeto al array
         modelView.addObject("productos", listaProductos.getProductos());
         return modelView;
+    }
+
+    // Modificar
+    @GetMapping("/modificar/{nombre}")
+    public String getModificarProductoPage(Model model, @PathVariable(value="nombre")String nombre){
+        Producto productoEncontrado = new Producto();
+        boolean edicion = true;
+        for(Producto prod : listaProductos.getProductos()){
+            if (prod.getNombre().equals(nombre)){
+                productoEncontrado = prod;
+                break;
+            }
+        }
+        model.addAttribute("producto", productoEncontrado);
+        model.addAttribute("edicion", edicion);
+
+        return "nuevo_producto";
+    }
+
+    @PostMapping("/modificar")
+    public String modificarSucursal(@ModelAttribute("producto") Producto producto){
+        for(Producto prod : listaProductos.getProductos()){
+            if(prod.getNombre().equals(producto.getNombre())){
+                prod.setCategoria(producto.getCategoria());
+                prod.setCodigo(producto.getCodigo());
+                prod.setDescuento(producto.getDescuento());
+                prod.setPrecio(producto.getPrecio());
+                
+            }
+        }
+        return "redirect:/productos/listado";
+    }
+
+    // Eliminar producto
+    @GetMapping("/eliminar/{nombre}")
+    public String elimarProducto(@PathVariable(value="nombre")String nombre){
+        for(Producto prod : listaProductos.getProductos()){
+            if(prod.getNombre().equals(nombre)){
+                listaProductos.getProductos().remove(prod);
+                break;
+            }
+        }
+        return "redirect:/productos/listado";
     }
 }
