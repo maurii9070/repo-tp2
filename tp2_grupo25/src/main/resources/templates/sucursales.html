@@ -5,6 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" th:href="@{/css/estilos.css}" />
+		<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 		<title>Pet Service | Sucursales</title>
 	</head>
 	<body>
@@ -14,33 +15,57 @@
 		<!-- Sucursales -->
 		<section class="contenido-principal">
 			<h2 class="titulo-sucursales">Sucursales</h2>
-			<div class="sucursales">
-				<div class="sucursal">
-					<p class="casa">Casa central</p>
-					<p class="direccion">3915 Av. General Belgrano</p>
-				</div>
+			<div class="sucursales container">
+            <div class="row mx-auto">
 
-				<div class="sucursal">
-					<p class="casa">Atencion</p>
-					<p class="direccion">
-						2588 Calle Independencia esquina Senador Perez
-					</p>
-				</div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card border-info mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Casa central</div>
+                        <div class="card-body">
+                            <p class="card-text">3915 Av. General Belgrano</p>
+                        </div>
+                    </div>
+                </div>
 
-				<div class="sucursal">
-					<p class="casa">Tienda Fisica 1</p>
-					<p class="direccion">2666 Necochea</p>
-				</div>
 
-				<div class="sucursal">
-					<p class="casa">Tienda Fisica 2</p>
-					<p class="direccion">420 Av. Juan Domingo Peron</p>
-				</div>
-			</div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card border-info mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Atencion</div>
+                        <div class="card-body">
+                            <p class="card-text">2588 Calle Independencia esquina Senador Perez</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card border-info mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Tienda Fisica 1</div>
+                        <div class="card-body">
+                            <p class="card-text">2666 Necochea</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card border-info mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Tienda Fisica 2</div>
+                        <div class="card-body">
+                            <p class="card-text">420 Av. Juan Domingo Peron</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
 		</section>
 
 		<aside th:replace="~{layouts/aside :: aside}"></aside>
 
 		<footer th:replace="~{layouts/footer :: footer}"></footer>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 	</body>
 </html>

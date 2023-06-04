@@ -6,6 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" th:href="@{/css/estilos.css}" />
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 	<title>Pet Service | Productos</title>
 </head>
 
@@ -16,68 +17,102 @@
 	<section class="contenido-principal">
 		<a th:href="@{/productos/nuevo-producto}" class="nuevo-producto"> <span>+</span> Nuevo producto</a>
 		<h2 class="titulo-centralizado">Productos en stock</h2>
-		<div class="productos">
-			<div class="producto">
-				<p class="titulo-producto"><b>Shampoo antiseptico</b></p>
-				<img class="imagen-consejo" th:src="@{/images/shampoo.jpg}" alt="shampoo-antiseptico" height="150" width="150" />
-				<p class="titulo-principal">Antimicrroductoítico, Antipruriginoso.</p>
-			</div>
+		<div class="container">
+			<div class="row g-4">
+				<!-- Tp5 pt1 -->
 
-			<div class="producto">
-				<p class="titulo-producto"><b>Jabon Pulguicida</b></p>
-				<img class="imagen-consejo" th:src="@{/images/jabon.webp}" alt="jabon-pulguicida" height="150" width="150" />
-				<p class="titulo-principal">
-					Jabon pulguicida de caninos y felinos, tanto para pieles sanas como con problemas.
-				</p>
-			</div>
 
-			<div class="producto">
-				<p class="titulo-producto"><b>Correa y Collar Premium</b></p>
-				<img class="imagen-consejo" th:src="@{/images/correa-y-collar.webp}" alt="correa-collar" height="150"
-					width="150" />
-				<p class="titulo-principal">
-					Correa Producto acolchonado Premium Rascals y un Collar Perro Pequeño Acolchonado.
-				</p>
-			</div>
+				<div class="col-sm-6 col-lg-4 ">
+					<div class="card ">
+						<img class="card-img-top" th:src="@{/images/shampoo.jpg}" alt="shampoo-antiseptico" height="150"
+							width="150" />
+						<div class="card-body">
+							<h5 class="card-title">Shampoo antiseptico</h5>
 
-			<div class="producto">
-				<p class="titulo-producto"><b>Cepillo para perros y gatos</b></p>
-				<img class="imagen-consejo" th:src="@{/images/cepillo.jpeg}" alt="cepillo" height="150" width="150" />
-				<p class="titulo-principal">
-					Cepillo de pelo largo e intermedio, equipado con púas inclinadas de acero inoxidable.
-				</p>
-			</div>
-
-			<div class="producto">
-				<p class="titulo-producto">
-					<b>Juguete Para Perro - Hueso de Soga Anti Estres</b>
-				</p>
-				<img class="imagen-consejo" th:src="@{/images/juguete-soga.webp}" alt="cepillo" height="150" width="150" />
-				<p class="descripcion-producto">
-					Diseño novedoso - Resistente al agua - No tiene materiales toxicos - Antiestres
-				</p>
-			</div>
-
-			<div class="col-sm-6 col-lg-4" th:each="prod : ${productos}">
-				<div class="card  ">
-					<div class="card-body ">
-						<h5 th:text="${prod.nombre}" class="card-title"></h5>
-						<p class="card-text">Categoria: <span th:text="${prod.categoria}"></span></p>
-						<p class="card-text">Descuento: %<span th:text="${prod.descuento}"></span></p>
-						<p class="card-text">Precio Final: $<span th:text="${prod.calcularDescuento}"></span></p>
-						<div class="d-flex justify-content-between">
-							<a th:href="@{/productos/modificar/}+${prod.nombre}" class="btn btn-primary">Modificar</a>
-							<a th:href="@{/productos/eliminar/}+${prod.nombre}" class="btn btn-danger">Eliminar</a>
+							<p class="card-text">Antimicrroductoítico, Antipruriginoso.</p>
 						</div>
 					</div>
 				</div>
+
+
+
+				<div class="col-sm-6 col-lg-4 ">
+					<div class="card ">
+						<img class="card-img-top" th:src="@{/images/jabon.webp}" height="150" width="150" />
+						<div class="card-body">
+							<h5 class="card-title">Jabon Pulguicida</h5>
+							<p class="card-text">
+								Jabon pulguicida de caninos y felinos, tanto para pieles sanas como con problemas.
+							</p>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-sm-6 col-lg-4 ">
+					<div class=" card ">
+						<img class="card-img-top" th:src="@{/images/correa-y-collar.webp}" alt="correa-collar" height="150"
+							width="150" />
+						<div class="card-body">
+							<h5 class="card-title">Correa y Collar Premium</h5>
+							<p class="card-text">
+								Correa Producto acolchonado Premium Rascals y un Collar Perro Pequeño Acolchonado.
+							</p>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-sm-6 col-lg-4">
+					<div class="card  ">
+						<img class="card-img-top" th:src="@{/images/cepillo.jpeg}" alt="cepillo" height="150" width="150" />
+						<div class="card-body">
+							<h5 class="card-title">Cepillo para perros y gatos</h5>
+							<p class="card-text">
+								Cepillo de pelo largo e intermedio, equipado con púas inclinadas de acero inoxidable.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-lg-4 ">
+					<div class="card ">
+						<img class="card-img-top" th:src="@{/images/juguete-soga.webp}" alt="cepillo" height="150" width="150" />
+						<div class="card-body">
+							<h5 class="card-title">
+								Juguete Para Perro - Hueso de Soga Anti Estres
+							</h5>
+
+							<p class="card-text">
+								Diseño novedoso - Resistente al agua - No tiene materiales toxicos - Antiestres
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-lg-4" th:each="prod : ${productos}">
+					<div class="card  ">
+						<div class="card-body ">
+							<h5 th:text="${prod.nombre}" class="card-title"></h5>
+							<p class="card-text">Categoria: <span th:text="${prod.categoria}"></span></p>
+							<p class="card-text">Descuento: $<span th:text="${prod.descuento}"></span></p>
+							<p class="card-text">Precio Final: $<span th:text="${prod.calcularDescuento}"></span></p>
+							<div class="d-flex justify-content-between">
+								<a th:href="@{/productos/modificar/}+${prod.nombre}"
+									class="btn btn-secondary text-white fw-bold">Modificar</a>
+								<a th:href="@{/productos/eliminar/}+${prod.nombre}" class="btn btn-danger fw-bold">Eliminar</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
 			</div>
-		</div>
 	</section>
 
 	<aside th:replace="~{layouts/aside :: aside}"></aside>
 
 	<footer th:replace="~{layouts/footer :: footer}"></footer>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 
 </html>
