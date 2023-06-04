@@ -3,6 +3,7 @@ package ar.edu.unju.fi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.listas.ProductoLista;
 import ar.edu.unju.fi.model.Producto;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/productos")
@@ -35,9 +37,15 @@ public class ProductosController {
         return "nuevo_producto";
     }
 
-    @PostMapping("/guardar")
-    public ModelAndView getGuardarProductoPage(@ModelAttribute("producto") Producto producto){
+ // Guardamos el objeto Producto con los datos del Form en listaProductos
+    @PostMapping("/guardar") // Tp5 pt2 @valid y BindingResult
+    public ModelAndView getGuardarProductoPage(@Valid @ModelAttribute("producto") Producto producto , BindingResult result){
         ModelAndView modelView = new ModelAndView("productos"); // nombre de la pagina
+        if(result.hasErrors()){
+            modelView.setViewName("nuevo_producto");
+            modelView.addObject("producto", producto);
+            return modelView;
+        }
         listaProductos.getProductos().add(producto); // Trae el arrayList y agrega el nuevo objeto al array
         modelView.addObject("productos", listaProductos.getProductos());
         return modelView;
