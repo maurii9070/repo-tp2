@@ -2,7 +2,9 @@
 <html xmlns:th="http://thymeleaf.org" lang="es">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" th:href="@{/css/estilos.css}" />
+		<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 		<title>Pet service | Paseos</title>
 	</head>
 	<body>
@@ -17,7 +19,7 @@
 				nuestros paseadores:
 			</h3>
 			<div class="tabla-services">
-			<table  border="1px" >
+			<table  class="table table-striped" >
 				<tr>
 					<th>Dia</th>
 					<th>Lunes</th>
@@ -52,5 +54,6 @@
 		<aside th:replace="~{layouts/aside :: aside}"></aside>
 
 		<footer th:replace="~{layouts/footer :: footer}"></footer>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 	</body>
 </html>
