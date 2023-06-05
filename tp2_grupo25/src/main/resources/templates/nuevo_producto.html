@@ -11,36 +11,43 @@
 </head>
 
 <body>
-	<header th:replace="layouts/header :: header"></header>
+	<header th:replace="~{layouts/header :: header}"></header>
 
 	<div class="contenedor-form">
 		<h3 th:text="${edicion} ? 'Modificar Producto' : 'Nuevo Producto'"></h3>
 		<form th:action="${edicion} ? @{/productos/modificar} : @{/productos/guardar}" th:object="${producto}" method="post"
 			class="form-nuevo-producto">
+			
+			<p class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
 			<div class="campos">
 				<label for="nombre">Nombre: </label>
 				<input type="text" name="nombre" id="nombre" th:field="*{nombre}" />
 			</div>
-
+			
+			<p class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></p>
 			<div class="campos">
 				<label for="codigo">Codigo: </label>
 				<input type="number" name="codigo" id="codigo" min="0" th:field="*{codigo}" />
 			</div>
 
+			<p class="text-danger" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></p>
 			<div class="campos">
 				<label for="precio">Precio: </label>
 				<input type="number" name="precio" id="precio" min="0" th:field="*{precio}" />
 			</div>
-
+			
+			<p class="text-danger" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></p>
 			<div class="campos">
 				<label for="categoria">Categoria: </label>
 				<select th:field="*{categoria}" name="categoria" id="categoria">
+					<option value="">Seleccionar una categoria</option>
 					<option th:value="Higiene" th:text="Higiene"></option>
 					<option th:value="Alimento" th:text="Alimentos"></option>
 					<option th:value="Juguete" th:text="Juguete"></option>
 				</select>
 			</div>
 
+			<p class="text-danger" th:if="${#fields.hasErrors('descuento')}" th:errors="*{descuento}"></p>
 			<div class="campos">
 				<label for="descuento">Descuento: </label>
 				<input type="number" name="descuento" id="descuento" max="50" min="0" th:field="*{descuento}" />
@@ -52,9 +59,9 @@
 		</form>
 	</div>
 
-	<aside th:replace="layouts/aside :: aside"></aside>
+	<aside th:replace="~{layouts/aside :: aside}"></aside>
 
-	<footer th:replace="layouts/footer :: footer"></footer>
+	<footer th:replace="~{layouts/footer :: footer}"></footer>
 	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 
