@@ -17,13 +17,13 @@
 		<h3 th:text="${edicion} ? 'Modificar Producto' : 'Nuevo Producto'"></h3>
 		<form th:action="${edicion} ? @{/productos/modificar} : @{/productos/guardar}" th:object="${producto}" method="post"
 			class="form-nuevo-producto">
-			
+
 			<p class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
 			<div class="campos">
 				<label for="nombre">Nombre: </label>
-				<input type="text" name="nombre" id="nombre" th:field="*{nombre}" />
+				<input type="text" name="nombre" id="nombre" th:field="*{nombre}" th:readonly="${edicion}" />
 			</div>
-			
+
 			<p class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></p>
 			<div class="campos">
 				<label for="codigo">Codigo: </label>
@@ -35,7 +35,7 @@
 				<label for="precio">Precio: </label>
 				<input type="number" name="precio" id="precio" min="0" th:field="*{precio}" />
 			</div>
-			
+
 			<p class="text-danger" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></p>
 			<div class="campos">
 				<label for="categoria">Categoria: </label>
