@@ -69,14 +69,21 @@ public class ProductosController {
     }
 
     @PostMapping("/modificar")
-    public String modificarSucursal(@ModelAttribute("producto") Producto producto){
+    public String modificarSucursal(@Valid @ModelAttribute("producto") Producto producto, BindingResult result, Model model){
+        
+        if(result.hasErrors()){
+            boolean edicion = true;
+            model.addAttribute("edicion", edicion);
+            return "nuevo_producto";
+        }
+
         for(Producto prod : listaProductos.getProductos()){
             if(prod.getNombre().equals(producto.getNombre())){
+                prod.setNombre(producto.getNombre());
                 prod.setCategoria(producto.getCategoria());
                 prod.setCodigo(producto.getCodigo());
                 prod.setDescuento(producto.getDescuento());
-                prod.setPrecio(producto.getPrecio());
-                
+                prod.setPrecio(producto.getPrecio());                
             }
         }
         return "redirect:/productos/listado";

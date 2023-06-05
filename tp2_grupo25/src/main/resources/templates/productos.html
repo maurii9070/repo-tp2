@@ -94,9 +94,10 @@
 					<div class="card  ">
 						<div class="card-body ">
 							<h5 th:text="${prod.nombre}" class="card-title"></h5>
-							<p class="card-text">Categoria: <span th:text="${prod.categoria}"></span></p>
-							<p class="card-text">Descuento: $<span th:text="${prod.descuento}"></span></p>
-							<p class="card-text">Precio Final: $<span th:text="${prod.calcularDescuento}"></span></p>
+							<p class="card-text ">Categoria: <span th:text="${prod.categoria}"></span></p>
+							<p class="card-text">Descuento: <span th:text="${prod.descuento}"></span>%</p>
+							<p class="card-text">Precio Final: $<span th:text="${prod.calcularDescuento}"></span>
+							</p>
 							<div class="d-flex justify-content-between">
 								<a th:href="@{/productos/modificar/}+${prod.nombre}"
 									class="btn btn-secondary text-white fw-bold">Modificar</a>
