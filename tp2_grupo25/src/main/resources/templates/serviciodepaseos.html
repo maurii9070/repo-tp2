@@ -1,59 +1,106 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org" lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" th:href="@{/css/estilos.css}" />
-		<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-		<title>Pet service | Paseos</title>
-	</head>
-	<body>
-		<header th:replace="~{layouts/header :: header}"></header>
-			
-		</header>
-		<section class="contenido-principal">
-			<div class="servicios"> <!-- POR AHORA NO -->
-			<h2 class= "titulo-services">Servicios de Paseos</h2>
-			<h3 class="h3">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/css/estilos.css}" />
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<title>Pet service | Paseos</title>
+</head>
+
+<body>
+	<header th:replace="~{layouts/header :: header}"></header>
+
+	</header>
+	<section class="contenido-principal">
+		<div class="servicios"> <!-- POR AHORA NO -->
+			<h2 class="titulo-services">Servicios de Paseos</h2>
+			<div>
+				<p class="bg-primary bg-opacity-10 border border-info text-secondary d-inline py-3 px-2 rounded-2">Para
+					contratar un
+					Servicio, dar
+					click
+					en el
+					nombre del
+					paseador que
+					desee
+					contratar.</p>
+			</div>
+			<h3 class="h3 mt-5">
 				A continuación te presentamos los días y horarios disponibles de
 				nuestros paseadores:
 			</h3>
-			<div class="tabla-services">
-			<table  class="table table-striped" >
-				<tr>
-					<th>Dia</th>
-					<th>Lunes</th>
-					<th>Martes</th>
-					<th>Miercoles</th>
-					<th>Jueves</th>
-					<th>Viernes</th>
-					<th>Sabado</th>
-				</tr>
-				<tr>
-					<td>Horario</td>
-					<td>9 a 12 - 16 a 18</td>
-					<td>9 a 12 - 16 a 18</td>
-					<td>9 a 12 - 16 a 18</td>
-					<td>9 a 12 - 16 a 18</td>
-					<td>9 a 12 - 16 a 18</td>
-					<td>9 a 12 - 16 a 18</td>
-				</tr>
-				<tr>
-					<td>Paseador</td>
-					<td>Leo Soza</td>
-					<td>Mauro Chayle</td>
-					<td>Leo Somoza</td>
-					<td>Juan Perez</td>
-					<td>Jose Lopez</td>
-					<td>Lean Chayle</td>
-				</tr>
-			</table>
-			</div>
-		</section>
-		</div>
-		<aside th:replace="~{layouts/aside :: aside}"></aside>
+			<div class="container">
+				<table class="table table-striped text-center">
+					<tr>
+						<th>Dia</th>
+						<th>Lunes</th>
+						<th>Martes</th>
+						<th>Miercoles</th>
+						<th>Jueves</th>
+						<th>Viernes</th>
+						<th>Sabado</th>
+					</tr>
+					<tr>
+						<th>Horario</th>
+						<td>9 a 12 - 16 a 18</td>
+						<td>9 a 12 - 16 a 18</td>
+						<td>9 a 12 - 16 a 18</td>
+						<td>9 a 12 - 16 a 18</td>
+						<td>9 a 12 - 16 a 18</td>
+						<td>9 a 12 - 16 a 18</td>
+					</tr>
+					<tr>
+						<th>Paseador</th>
+						<td><a th:href="@{/servicios/nuevo-servicio/Lunes/Juan Perez}" class="btn btn-outline-secondary">Juan
+								Perez</a></td>
+						<td><a th:href="@{/servicios/nuevo-servicio/Martes/Lucas Diaz}" class="btn btn-outline-secondary">Lucas
+								Diaz</a></td>
+						<td><a th:href="@{/servicios/nuevo-servicio/Miercoles/Juan Perez}" class="btn btn-outline-secondary">Juan
+								Perez</a></td>
+						<td><a th:href="@{/servicios/nuevo-servicio/Jueves/Maria Gomez}" class="btn btn-outline-secondary">Maria
+								Gomez</a></td>
+						<td><a th:href="@{/servicios/nuevo-servicio/Viernes/Lucas Diaz}" class="btn btn-outline-secondary">Lucas
+								Diaz</a></td>
+						<td><a th:href="@{/servicios/nuevo-servicio/Sabado/Roberto Vazquez}"
+								class="btn btn-outline-secondary">Roberto Vazquez</a>
+						</td>
+					</tr>
+				</table>
 
-		<footer th:replace="~{layouts/footer :: footer}"></footer>
-		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-	</body>
+
+			</div>
+
+			<div class="row g-4 mt-4">
+
+				<h3>Lista de Paseos</h3>
+
+				<div class="col-sm-6 col-lg-4" th:each="servicio : ${servicios}">
+
+					<div class="card">
+						<div class="card-body">
+							<p class="card-text">Nombre Mascota: <span th:text="${servicio.nombreMascota}"></span></p>
+							<p class="card-text">Nombre Dueño: <span th:text="${servicio.nombreDuenio}"></span></p>
+							<p class="card-text">Dia de Paseo: <span th:text="${servicio.diaPaseo}"></span></p>
+							<p class="card-text">Nombre Paseador: <span th:text="${servicio.paseadorNombre}"></span></p>
+							<p class="card-text">Horario de Paseo: <span th:text="${servicio.horarioPaseo}"></span></p>
+							<div class="d-flex justify-content-between">
+								<a th:href="@{/servicios/modificar/}+${servicio.nombreMascota}"
+									class="btn btn-secondary text-white fw-bold">Modificar</a>
+								<a th:href="@{/servicios/eliminar/}+${servicio.nombreMascota}"
+									class="btn btn-danger fw-bold">Eliminar</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</section>
+	</div>
+	<aside th:replace="~{layouts/aside :: aside}"></aside>
+
+	<footer th:replace="~{layouts/footer :: footer}"></footer>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
 </html>

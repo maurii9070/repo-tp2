@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/estilos.css}" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <title th:text="${edicion} ? 'Editar servicio' : 'Nuevo Servicio'"></title>
+</head>
+
+<body>
+    <header th:replace="~{layouts/header :: header}"></header>
+
+    <div class="contenedor-form">
+        <h3 class="mb-4 text-center" th:text="${edicion} ? 'Editar servicio' : 'Nuevo Servicio'"> </h3>
+
+        <form th:action="${edicion} ? @{/servicios/modificar} : @{/servicios/guardar}" th:object="${servicio}" method="post">
+            <div class="mb-3">
+
+                <label for="dia" class="mascota">Nombre Mascota: </label>
+                <input type="text" name="mascota" id="mascota" class="form-control" th:field="*{nombreMascota}"
+                    th:readonly="${edicion}" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="dia" class="duenio">Nombre Dueño: </label>
+                <input type="text" name="duenio" id="duenio" class="form-control" th:field="*{nombreDuenio}" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="dia" class="form-label">Dia:</label>
+                <select name="dia" id="dia" class="form-select" th:field="*{diaPaseo}" th:if="!${edicion}">
+                    <option th:value="${dia}" th:text="${dia}"></option>
+                </select>
+
+                <input type="text" name="dia" id="dia" th:field="*{diaPaseo}" class="form-control" th:unless="!${edicion}"
+                    readonly>
+            </div>
+
+            <div class="mb-3">
+                <label for="paseador" class="form-label">Paseador:</label>
+                <select name="paseador" id="paseador" class="form-select" th:field="*{paseadorNombre}" th:if="!${edicion}">
+                    <option th:value="${paseador}" th:text="${paseador}"></option>
+                </select>
+
+                <input type="text" name="paseador" id="paseador" th:field="*{paseadorNombre}" class="form-control"
+                    th:unless="!${edicion}" readonly>
+            </div>
+
+            <div class="mb-3">
+                <label for="horario" class="form-label">Horario:</label>
+                <select name="horario" id="horario" class="form-select" th:field="*{horarioPaseo}" required>
+                    <option value="">Seleccionar un horario</option>
+                    <option value="9 a 12 HS">9 a 12 HS</option>
+                    <option value="16 a 18 HS">16 a 18 HS</option>
+                </select>
+
+            </div>
+
+            <input type="submit" th:value="${edicion} ? 'Editar Servicio' : 'Guardar Servicio'" class="btn btn-primary w-100">
+
+        </form>
+    </div>
+
+    <aside th:replace="~{layouts/aside :: aside}"></aside>
+
+    <footer th:replace="~{layouts/footer :: footer}"></footer>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+</html>
