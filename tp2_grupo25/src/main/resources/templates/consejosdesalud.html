@@ -1,127 +1,55 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org" lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" th:href="@{/css/estilos.css}" />
-		<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-		<title>Pet Service | Consejos de Salud</title>
-	</head>
-	<body>
-		<header th:replace="~{layouts/header :: header}"></header>
-		<!-- Consejos de Salud -->
-		<section class="contenido-principal">
-			<h2 class="titulo-centralizado">Consejos de Salud</h2>
-			<div class="container">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" th:href="@{/css/estilos.css}" />
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<title>Pet Service | Consejos de Salud</title>
+</head>
+
+<body>
+	<header th:replace="~{layouts/header :: header}"></header>
+	<!-- Consejos de Salud -->
+	<section class="contenido-principal">
+
+		<div>
+			<a th:href="@{/consejos/nuevo-consejo}" class="btn btn-primary">Agregar un Consejo</a>
+		</div>
+
+		<h2 class="titulo-centralizado">Consejos de Salud</h2>
+		<div class="container">
 
 			<div class="row g-4">
-
-
-
-				<div class="col-xxl-6">
+				<div th:each="consejo : ${consejos}" class="col-xxl-6">
 					<div class="card">
-						<img class="card-img-top" th:src="@{/images/aseo.jpg}" alt="Aseo-de-mascota" title="Aseo de mascota"
-							width="400" height="300" />
+						<img th:src="${consejo.imgUrl}" th:alt="${consejo.titulo}" width="400" height="300" class="card-img-top">
 						<div class="card-body">
-							<h3 class="card-title">No duescuide su limpieza</h3>
-							<p class="card-text">
-								Deberá realizarle un aseo periodico para asi poder detectar y tomar medidas necesarias en caso de
-								tener parasitos externos (como pulgas, garrapatas, etc...) y enfermedades de la piel.
-							</p>
-						</div>
+							<h3 th:text="${consejo.titulo}"></h3>
+							<div class="card-text" th:text="${consejo.consejo}"></div>
 
+							<div class="d-flex justify-content-between mt-3">
+								<a th:href="@{/consejos/modificar/}+${consejo.titulo}"
+									class="btn btn-secondary text-white fw-bold">Modificar</a>
+								<a th:href="@{/consejos/eliminar/} + ${consejo.titulo}"
+									class="btn btn-danger fw-bold">Eliminar</a>
+							</div>
+						</div>
 					</div>
 				</div>
-
-				<div class="col-xxl-6">
-					<div class="card">
-						<img class="card-img-top" th:src="@{/images/perro_desparasitado.jpeg}" alt="Perro_desparasitado"
-							title="Perro desparacitado" width="400" height="300" />
-						<div class="card-body">
-							<h3 class="card-title">Desparasite con frecuencia a su mascota.</h3>
-							<p class="card-text">
-								La desparasitación de las mascotas debe llevarse a cabo antes de iniciar el suministro de las
-								vacuna, porque además de eliminar los parásitos, el antiparasitario estimula las defensas y ayuda
-								a
-								que la vacuna produzca un mejor efecto inmune en los animales.
-							</p>
-						</div>
-
-					</div>
-				</div>
-
-				<div class="col-xxl-6">
-					<div class="card">
-						<img class="card-img-top" th:src="@{/images/perrito_con_calor.jpeg}" alt="Perrito_con_calor"
-							title="Adopta no compres" width="400" height="300" />
-						<div class="card-body">
-							<h3 class="card-title">Evita los cambios bruscos de temperatura.</h3>
-							<p class="card-text">
-								Evita las altas temperaturas en verano, dale agua fresca y limpia frecuentemente, evita los
-								ejercicios intensos durante las horas de más calor, no olvides a tu mascota dentro del coche y
-								evita
-								las situaciones de estrés. Recuerda que con el calor los animales puede que no tengan tanto
-								apetito.
-								En invierno, al haber bajas temperaturas los animales necesitan ingerir más cantidad de energía
-								por
-								lo que puede aumentar su apetito, así que reparte las comidas para evitar sobrecargar su sistema
-								digestivo.
-							</p>
-						</div>
-
-					</div>
-				</div>
-
-				<div class="col-xxl-6">
-					<div class="card">
-						<img class="card-img-top" th:src="@{/images/alimentacion.jpg}" alt="Alimentacion-sana"
-							title="Alimentacion sana" width="400" height="300" />
-						<div class="card-body">
-							<h3 class="card-title">Proporcionarle una alimentación sana</h3>
-							<p class="card-text">
-								Utilice alimentos saludables que cubran todas las necesidades nutricionales de su mascota,
-								aportando
-								todos los elementos necesarios para un correcto crecimiento y desarrollo de la mascota, desde sus
-								primeros años de vida hasta su etapa adulta. Tenga en cuenta que las necesidades de su mascota van
-								cambiando a lo largo de su vida, por lo que deberá proporcionarle lo que el animal necesite
-								dependiendo de su estado fisiológico. Además es aconsejable repartir las comidas para evitar
-								sobrecargar al animal y que tenga así mejores digestiones. Tenga siempre a su disposición agua
-								fresca y limpia para que pueda hidratarse con regularidad.
-							</p>
-						</div>
-
-					</div>
-				</div>
-
-				<div class="col-xxl-6 ">
-					<div class="card">
-						<img class="card-img-top" th:src="@{/images/veterinario.webp}" alt="Visita-veterinario"
-							title="Visita al veterinario" width="400" height="300" />
-						<div class="card-body">
-							<h3 class="card-title">Visitar regularmente el veterinario</h3>
-							<p class="card-text">
-								En la primer visita de nuestra mascota al veterinario, este se encargará de revisar su estadode
-								salud y descartar cualquier patología, además de establecer el plan de vacunación y escoger las
-								vacunas adecuadas para cada animal, según el riesgo de exposición a ciertas enfermedades y la zona
-								de residencia. Debido a esto, no existe un calendario de vacunación único.
-							</p>
-						</div>
-
-					</div>
-				</div>
-
-
 			</div>
 
 
 
 
 		</div>
-		</section>
+	</section>
 
-		<aside th:replace="~{layouts/aside :: aside}"></aside>
+	<aside th:replace="~{layouts/aside :: aside}"></aside>
 
-		<footer th:replace="~{layouts/footer :: footer}"></footer>
-		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-	</body>
+	<footer th:replace="~{layouts/footer :: footer}"></footer>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
 </html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/estilos.css}" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <title th:text="${edicion} ? 'Editar Consejo' : 'Nuevo Consejo'"></title>
+</head>
+
+<body>
+    <header th:replace="~{layouts/header :: header}"></header>
+
+    <div class="contenedor-form">
+        <h3 class="mb-3 text-center" th:text="${edicion} ? 'Editar Consejo' : 'Nuevo Consejo'"> </h3>
+
+        <form method="post" th:object="${consejo}" th:action="${edicion} ? @{/consejos/modificar} : @{/consejos/guardar}">
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Titulo</label>
+                <input type="text" id="titulo" class="form-control" th:field="*{titulo}" th:readonly="${edicion}">
+
+                <p class="text-danger" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></p>
+            </div>
+
+            <!-- Va oculto ya que no podemos subir una imagen -->
+            <div class="mb-3 d-none">
+                <input type="text" id="img" th:field="*{imgUrl}">
+            </div>
+
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Consejo</label>
+                <textarea id="consejo" class="form-control" rows="8" th:field="*{consejo}"></textarea>
+
+                <p class="text-danger" th:if="${#fields.hasErrors('consejo')}" th:errors="*{consejo}"></p>
+            </div>
+
+            <input type="submit" class="btn btn-primary" th:value="${edicion} ? 'Editar Consejo' : 'Agregar Consejo'">
+
+        </form>
+    </div>
+
+    <aside th:replace="~{layouts/aside :: aside}"></aside>
+
+    <footer th:replace="~{layouts/footer :: footer}"></footer>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+</html>
