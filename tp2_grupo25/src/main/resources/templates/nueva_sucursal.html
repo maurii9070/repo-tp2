@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/estilos.css}" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <title th:text="${edicion} ? 'Editar Sucursal' : 'Nueva Sucursal'"></title>
+</head>
+
+<body>
+    <header th:replace="~{layouts/header :: header}"></header>
+
+    <div class="contenedor-form">
+        <h3 class="mb-4 text-center" th:text="${edicion} ? 'Editar Sucursal' : 'Nueva Sucursal'"></h3>
+
+        <form method="post" th:object="${sucursal}" th:action="${edicion} ? @{/sucursales/modificar} : @{/sucursales/guardar}">
+
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre Sucursal</label>
+                <input type="text" id="nombre" class="form-control" th:field="*{nombre}" th:readonly="${edicion}"
+                    autocomplete="off">
+
+                <p class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
+            </div>
+
+            <div class="mb-3">
+                <label for="encargado" class="form-label">Nombre Encargado:</label>
+                <input type="text" id="encargado" class="form-control" th:field="*{encargadoNombre}" autocomplete="off">
+
+                <p class="text-danger" th:if="${#fields.hasErrors('encargadoNombre')}" th:errors="*{encargadoNombre}"></p>
+            </div>
+
+            <div class="mb-3">
+                <label for="direccion" class="form-label">Direccion:</label>
+                <input type="text" id="direccion" class="form-control" th:field="*{direccion}">
+
+                <p class="text-danger" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></p>
+            </div>
+
+            <input type="submit" class="btn btn-primary w-100" th:value="${edicion} ? 'Editar Sucursal' : 'Agregar Sucursal'">
+
+        </form>
+    </div>
+
+    <aside th:replace="~{layouts/aside :: aside}"></aside>
+
+    <footer th:replace="~{layouts/footer :: footer}"></footer>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+</html>
