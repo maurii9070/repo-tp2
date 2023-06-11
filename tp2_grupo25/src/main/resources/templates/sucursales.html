@@ -1,71 +1,55 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org/" lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" th:href="@{/css/estilos.css}" />
-		<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-		<title>Pet Service | Sucursales</title>
-	</head>
-	<body>
-		<header th:replace="~{layouts/header :: header}"></header>
-			
 
-		<!-- Sucursales -->
-		<section class="contenido-principal">
-			<h2 class="titulo-sucursales">Sucursales</h2>
-			<div class="sucursales container">
-            <div class="row mx-auto">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/estilos.css}" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <title>Pet Service | Sucursales</title>
+</head>
 
-                <div class="col-sm-6 col-lg-4">
+<body>
+    <header th:replace="~{layouts/header :: header}"></header>
+
+
+    <!-- Sucursales -->
+    <section class="contenido-principal">
+        <div>
+            <a th:href="@{/sucursales/nueva-sucursal}" class="btn btn-primary">Agregar Sucursal</a>
+        </div>
+        <h2 class="titulo-sucursales">Sucursales</h2>
+        <div class="sucursales container">
+            <div class="row w-100">
+
+                <div class="col-sm-6 col-lg-4" th:each="sucursal : ${sucursales}">
                     <div class="card border-info mb-3" style="max-width: 18rem;">
-                        <div class="card-header">Casa central</div>
+                        <div class="card-header text-center fw-bold" th:text="${sucursal.nombre}"></div>
                         <div class="card-body">
-                            <p class="card-text">3915 Av. General Belgrano</p>
+                            <p class="card-text">Encargado: <span th:text="${sucursal.encargadoNombre}"></span></p>
+                            <p class="card-text">Direccion: <span th:text="${sucursal.direccion}"></span></p>
+
+                            <div class="d-flex justify-content-between">
+                                <a th:href="@{/sucursales/modificar/} + ${sucursal.nombre}"
+                                    class="btn btn-secondary text-white fw-bold">Modificar</a>
+                                <a th:href="@{/sucursales/eliminar/} + ${sucursal.nombre}"
+                                    class="btn btn-danger fw-bold">Eliminar</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-
-                <div class="col-sm-6 col-lg-4">
-                    <div class="card border-info mb-3" style="max-width: 18rem;">
-                        <div class="card-header">Atencion</div>
-                        <div class="card-body">
-                            <p class="card-text">2588 Calle Independencia esquina Senador Perez</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-4">
-                    <div class="card border-info mb-3" style="max-width: 18rem;">
-                        <div class="card-header">Tienda Fisica 1</div>
-                        <div class="card-body">
-                            <p class="card-text">2666 Necochea</p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-sm-6 col-lg-4">
-                    <div class="card border-info mb-3" style="max-width: 18rem;">
-                        <div class="card-header">Tienda Fisica 2</div>
-                        <div class="card-body">
-                            <p class="card-text">420 Av. Juan Domingo Peron</p>
-                        </div>
-                    </div>
-                </div>
-
 
             </div>
 
 
         </div>
-		</section>
+    </section>
 
-		<aside th:replace="~{layouts/aside :: aside}"></aside>
+    <aside th:replace="~{layouts/aside :: aside}"></aside>
 
-		<footer th:replace="~{layouts/footer :: footer}"></footer>
-		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-	</body>
+    <footer th:replace="~{layouts/footer :: footer}"></footer>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
 </html>
