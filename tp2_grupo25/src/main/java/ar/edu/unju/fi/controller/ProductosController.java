@@ -26,6 +26,24 @@ public class ProductosController {
     public String productosPage(Model model){
         model.addAttribute("productos", productoService.getListaProducto());
 
+        model.addAttribute("producto", productoService.getProducto());
+
+        return "productos";
+    }
+
+    /* 
+    Para la busqueda obtenemos del objeto Producto el nombre.
+ */
+    @PostMapping("/buscar")
+    public String buscarProducto(@ModelAttribute("producto") Producto producto, Model model){
+        //ModelAndView modelView = new ModelAndView("sucursales");
+
+        Boolean buscar = true;
+        
+
+        model.addAttribute("productosEncontrado", productoService.buscar(producto.getNombre()));        
+        model.addAttribute("buscar", buscar);
+
 
         return "productos";
     }

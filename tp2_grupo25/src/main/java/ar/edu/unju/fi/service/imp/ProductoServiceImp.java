@@ -78,4 +78,23 @@ public class ProductoServiceImp implements IProductoService {
         }
     }
 
+    // Buscar producto
+    public List<Producto> buscar(String nombre){
+        
+        if(listaProductos.getProductos().size() > 0){
+
+            // Vaciar el array, para una nueva busqueda
+            listaProductos.getProductosEncontrados().clear(); 
+
+            for(Producto prod : listaProductos.getProductos()){
+                // Si el nombre en la lista contiene "nombre" se agrega a la lista de
+                // Productos encontrados
+                if(prod.getNombre().contains(nombre)){
+                    listaProductos.getProductosEncontrados().add(prod);
+                }
+            }
+        }
+        
+        return listaProductos.getProductosEncontrados();
+    }
 }

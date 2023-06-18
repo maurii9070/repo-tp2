@@ -16,13 +16,30 @@
 
     <!-- Sucursales -->
     <section class="contenido-principal">
-        <div>
-            <a th:href="@{/sucursales/nueva-sucursal}" class="btn btn-primary">Agregar Sucursal</a>
+        <div class="row justify-content-between">
+            <a th:href="@{/sucursales/nueva-sucursal}" class="col-auto btn btn-primary h-25 mb-4 mb-md-0">Agregar Sucursal</a>
+
+            <!-- Buscarrrr -->
+            <div class="col-auto">
+                <form class="row" method="post" th:object="${sucursal}" th:action="@{/sucursales/buscar}">
+
+                    <div class="col-auto">
+                        <input type="text" class="form-control" id="inputBuscar" placeholder="Buscar por nombre"
+                            th:field="*{nombre}" required>
+                    </div>
+                    <div class=" col-auto">
+                        <input type="submit" value="Buscar" class="btn btn-success mb-3">
+                    </div>
+                </form>
+            </div>
+
         </div>
+
         <h2 class="titulo-sucursales">Sucursales</h2>
         <div class="sucursales container">
-            <div class="row w-100">
+            <div class="row w-100 mx-auto">
 
+                <!-- Lista sucursales -->
                 <div class="col-sm-6 col-lg-4" th:each="sucursal : ${sucursales}">
                     <div class="card border-info mb-3" style="max-width: 18rem;">
                         <div class="card-header text-center fw-bold" th:text="${sucursal.nombre}"></div>
@@ -38,6 +55,37 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+
+
+                <!-- Sucursal encontrada -->
+
+                <div th:if="${buscar}" class="d-flex flex-column align-items-center">
+
+                    <div class="col-sm-6 col-lg-4 " th:if="${sucursalEncontrada}">
+                        <div class="card border-info mb-3 mx-auto" style="max-width: 18rem;">
+                            <div class="card-header text-center fw-bold" th:text="${sucursalEncontrada.nombre}"></div>
+                            <div class="card-body">
+                                <p class="card-text">Encargado: <span th:text="${sucursalEncontrada.encargadoNombre}"></span></p>
+                                <p class="card-text">Direccion: <span th:text="${sucursalEncontrada.direccion}"></span></p>
+
+                                <div class="d-flex justify-content-between">
+                                    <a th:href="@{/sucursales/modificar/} + ${sucursalEncontrada.nombre}"
+                                        class="btn btn-secondary text-white fw-bold">Modificar</a>
+                                    <a th:href="@{/sucursales/eliminar/} + ${sucursalEncontrada.nombre}"
+                                        class="btn btn-danger fw-bold">Eliminar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div th:unless="${sucursalEncontrada}" class="text-center">
+                        <p class="border border-danger text-danger py-2 px-4 rounded">No se encontraron coincidencias.
+                        </p>
+                    </div>
+
+                    <a th:href="@{/sucursales/listado}" class="btn btn-success">Volver</a>
                 </div>
 
             </div>
