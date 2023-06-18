@@ -11,31 +11,29 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unju.fi.listas.SucursalLista;
 import ar.edu.unju.fi.model.Sucursal;
+import ar.edu.unju.fi.service.ISucursalService;
 import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/sucursales")
 public class SucursalesController {
 
-
     @Autowired
-    private SucursalLista listaSucursales;
-
-    @Autowired 
-    private Sucursal sucursal;
+    private ISucursalService sucursalService;
 
     @GetMapping("/listado")
     public String getSucursalesPage(Model model){
-        model.addAttribute("sucursales", listaSucursales.getSucursales());
+        model.addAttribute("sucursales", sucursalService.getListaSucursal());
+
         return "sucursales";
     }
+
 
     // Preparamos el objeto para guardarlo en la lista de sucursales
     @GetMapping("/nueva-sucursal") // Agregamos la direccion al formulario de nueva sucursal
     public String nuevaSucursalPage(Model model){
-        model.addAttribute("sucursal", sucursal); // Instanciamos una nueva sucursal para enviar...
+        model.addAttribute("sucursal", sucursalService.getSucursal()); // Instanciamos una nueva sucursal para enviar...
         return "nueva_sucursal";                               // a nueva sucursal
     }
 
@@ -50,8 +48,8 @@ public class SucursalesController {
             return modelView;
         }
 
-        listaSucursales.getSucursales().add(sucursal); // Trae el arrayList y agrega el nuevo objeto al array
-        modelView.addObject("sucursales", listaSucursales.getSucursales());
+        sucursalService.guardarSucursal(sucursal); // Trae el arrayList y agrega el nuevo objeto al array
+        modelView.addObject("sucursales", sucursalService.getListaSucursal());
 
         return modelView;
     }
@@ -59,14 +57,10 @@ public class SucursalesController {
     // Modificar una sucursal 
     @GetMapping("/modificar/{nombre}") // Traemos el nombre de una sucursal a editar
     public String getModificarSucursalPage(Model model, @PathVariable(value = "nombre") String nombre){
-        Sucursal sucursalEncontrada = sucursal; // Instanciamos un nuevo objeto sucursal
+       
         boolean edicion = true; // Avisar que estamos en el modo edicion
-        for(Sucursal sucu : listaSucursales.getSucursales()){ // Iteramos en lista sucursal
-            if(sucu.getNombre().equals(nombre)){ // Encontramos la sucursal a modificar
-                sucursalEncontrada = sucu;
-            }
-        }
-        model.addAttribute("sucursal", sucursalEncontrada); // Enviamos el objeto encontrado
+        
+        model.addAttribute("sucursal", sucursalService.getBy(nombre)); // Enviamos el objeto encontrado
         model.addAttribute("edicion", edicion);
 
         return "nueva_sucursal";
@@ -81,13 +75,7 @@ public class SucursalesController {
             return "nueva_sucursal";
         }
 
-         for(Sucursal sucu : listaSucursales.getSucursales()){ // Iteramos sobre la lista de sucursales
-            if(sucu.getNombre().equals(sucursal.getNombre())){ // Al encontrar coincidencia reemplazamos
-                sucu.setNombre(sucursal.getNombre());
-                sucu.setEncargadoNombre(sucursal.getEncargadoNombre());
-                sucu.setDireccion(sucursal.getDireccion());
-            }
-         }
+         sucursalService.modificarSucursal(sucursal);
 
          return "redirect:/sucursales/listado";
     }
@@ -95,12 +83,7 @@ public class SucursalesController {
     // Eliminar sucursal
     @GetMapping("/eliminar/{nombre}")
     public String elimarSucursal(@PathVariable(value="nombre")String nombre){
-        for(Sucursal sucu : listaSucursales.getSucursales()){ //Iteramos sobre la lista de sucursales
-            if(sucu.getNombre().equals(nombre)){ // Encontramos la sucursal a eliminar
-                listaSucursales.getSucursales().remove(sucu); // Removemos de la lista
-                break;
-            }
-        }
+        sucursalService.eliminarSucursal(nombre);
         return "redirect:/sucursales/listado";
     }
 }
