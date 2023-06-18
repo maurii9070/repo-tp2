@@ -11,29 +11,29 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unju.fi.listas.ProductoLista;
 import ar.edu.unju.fi.model.Producto;
+import ar.edu.unju.fi.service.IProductoService;
 import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/productos")
 public class ProductosController {
-
-    @Autowired 
-    private ProductoLista listaProductos; // Traemos producto lista desde el contenedor de spring (inyeccion de independencias)
-
-    @Autowired
-    private Producto producto; // Traemos producto desde el contenedor de spring (inyeccion de independencias)
     
+    @Autowired
+    private IProductoService productoService;
+
     @GetMapping("/listado")
     public String productosPage(Model model){
-        model.addAttribute("productos", listaProductos.getProductos());
+        model.addAttribute("productos", productoService.getListaProducto());
+
+
         return "productos";
     }
+
     
     @GetMapping("/nuevo-producto")
     public String nuevoProductoPage(Model model){
-        model.addAttribute("producto", producto);
+        model.addAttribute("producto", productoService.getProducto());
         return "nuevo_producto";
     }
 
@@ -46,23 +46,17 @@ public class ProductosController {
             modelView.addObject("producto", producto);
             return modelView;
         }
-        listaProductos.getProductos().add(producto); // Trae el arrayList y agrega el nuevo objeto al array
-        modelView.addObject("productos", listaProductos.getProductos());
+        productoService.guardar(producto); //  agrega el nuevo objeto al array
+        modelView.addObject("productos", productoService.getListaProducto());
         return modelView;
     }
 
     // Modificar
     @GetMapping("/modificar/{nombre}")
     public String getModificarProductoPage(Model model, @PathVariable(value="nombre")String nombre){
-        Producto productoEncontrado = producto;
         boolean edicion = true;
-        for(Producto prod : listaProductos.getProductos()){
-            if (prod.getNombre().equals(nombre)){
-                productoEncontrado = prod;
-                break;
-            }
-        }
-        model.addAttribute("producto", productoEncontrado);
+        
+        model.addAttribute("producto", productoService.getBy(nombre));
         model.addAttribute("edicion", edicion);
 
         return "nuevo_producto";
@@ -77,27 +71,16 @@ public class ProductosController {
             return "nuevo_producto";
         }
 
-        for(Producto prod : listaProductos.getProductos()){
-            if(prod.getNombre().equals(producto.getNombre())){
-                prod.setNombre(producto.getNombre());
-                prod.setCategoria(producto.getCategoria());
-                prod.setCodigo(producto.getCodigo());
-                prod.setDescuento(producto.getDescuento());
-                prod.setPrecio(producto.getPrecio());                
-            }
-        }
+        productoService.modificar(producto);
         return "redirect:/productos/listado";
     }
 
     // Eliminar producto
     @GetMapping("/eliminar/{nombre}")
     public String elimarProducto(@PathVariable(value="nombre")String nombre){
-        for(Producto prod : listaProductos.getProductos()){
-            if(prod.getNombre().equals(nombre)){
-                listaProductos.getProductos().remove(prod);
-                break;
-            }
-        }
+
+        productoService.eliminar(nombre);
+
         return "redirect:/productos/listado";
     }
 }
