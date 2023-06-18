@@ -25,6 +25,25 @@ public class ServicioPaseoController {
     public String getServicioDePaseoPage(Model model){
         model.addAttribute("servicios", servicioService.getListaServicio());
         
+        // Instanciamos un nuevo objeto Servicio (no parametrisado) para prepararlo para la busqueda
+        model.addAttribute("servicio", servicioService.getServicio());
+        
+        return "serviciodepaseos";
+    }
+
+    /* 
+    Para la busqueda obtenemos del objeto Servicio el nombre.
+    Reutilizamos el metodo getBy (para buscar por el nombre)
+ */
+    @PostMapping("/buscar")
+    public String buscarSucursal(@ModelAttribute("servicio") Servicio servicio, Model model){
+        //ModelAndView modelView = new ModelAndView("sucursales");
+
+        Boolean buscar = true;
+        
+        // Buscando por el nombre de mascota
+        model.addAttribute("servicioEncontrado", servicioService.getBy(servicio.getNombreMascota()));
+        model.addAttribute("buscar", buscar);
 
         return "serviciodepaseos";
     }

@@ -14,8 +14,25 @@
 	<!-- Consejos de Salud -->
 	<section class="contenido-principal">
 
-		<div>
-			<a th:href="@{/consejos/nuevo-consejo}" class="btn btn-primary">Agregar un Consejo</a>
+		<div class="row justify-content-between">
+			<div class="col-6 col-sm-4 mb-3 mb-md-0">
+				<a th:href="@{/consejos/nuevo-consejo}" class="btn btn-primary">Agregar un Consejo</a>
+			</div>
+
+			<!-- Buscarrrr -->
+			<div class="col-auto">
+
+				<form class="row" method="post" th:object="${consejo}" th:action="@{/consejos/buscar}">
+
+					<div class="col-auto">
+						<input type="text" class="form-control" id="inputBuscar" th:field="*{titulo}"
+							placeholder="Buscar por titulo" required>
+					</div>
+					<div class=" col-auto">
+						<input type="submit" value="Buscar" class="btn btn-success mb-3">
+					</div>
+				</form>
+			</div>
 		</div>
 
 		<h2 class="titulo-centralizado">Consejos de Salud</h2>
@@ -40,8 +57,32 @@
 				</div>
 			</div>
 
+			<div class="row g-4" th:if="${buscar}">
+				<div th:each="consejo : ${consejosEncontrados}" class="col-xxl-6">
+					<div class="card">
+						<img th:src="${consejo.imgUrl}" th:alt="${consejo.titulo}" width="400" height="300" class="card-img-top">
+						<div class="card-body">
+							<h3 th:text="${consejo.titulo}"></h3>
+							<div class="card-text" th:text="${consejo.consejo}"></div>
 
+							<div class="d-flex justify-content-between mt-3">
+								<a th:href="@{/consejos/modificar/}+${consejo.titulo}"
+									class="btn btn-secondary text-white fw-bold">Modificar</a>
+								<a th:href="@{/consejos/eliminar/} + ${consejo.titulo}"
+									class="btn btn-danger fw-bold">Eliminar</a>
+							</div>
+						</div>
+					</div>
+				</div>
 
+				<div th:if="${consejosEncontrados.size() == 0}">
+					<p class="border border-danger text-danger py-2 px-4 rounded">No se encontraron coincidencias.</p>
+				</div>
+			</div>
+
+			<div th:if="${buscar}">
+				<a th:href="@{/consejos/listado}" class="btn btn-success mt-4">Volver</a>
+			</div>
 
 		</div>
 	</section>

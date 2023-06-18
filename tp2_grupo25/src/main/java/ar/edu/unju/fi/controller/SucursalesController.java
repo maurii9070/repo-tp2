@@ -26,6 +26,27 @@ public class SucursalesController {
     public String getSucursalesPage(Model model){
         model.addAttribute("sucursales", sucursalService.getListaSucursal());
 
+        // Instanciamos un nuevo objeto sucursal (no parametrisado) para prepararlo para la busqueda
+        model.addAttribute("sucursal", sucursalService.getSucursal());
+
+        return "sucursales";
+    }
+
+    /* 
+    Para la busqueda obtenemos del objeto sucursal el nombre.
+    Reutilizamos el metodo getBy (para buscar por el nombre)
+
+ */
+    @PostMapping("/buscar")
+    public String buscarSucursal(@ModelAttribute("sucursal") Sucursal sucursal, Model model){
+        //ModelAndView modelView = new ModelAndView("sucursales");
+
+        Boolean buscar = true;
+        
+        model.addAttribute("sucursalEncontrada", sucursalService.getBy(sucursal.getNombre()));
+        model.addAttribute("buscar", buscar);
+
+
         return "sucursales";
     }
 

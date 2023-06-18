@@ -20,4 +20,6 @@ public interface IProductoService {
     // eliminar prod
     void eliminar(String nombre);
 
+    // Buscar
+    List<Producto> buscar(String nombre);
 }

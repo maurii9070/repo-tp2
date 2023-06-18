@@ -23,4 +23,7 @@ public interface IConsejoService {
 
     // Eliminar
     void eliminar(String titulo);
+
+    // Buscar
+    List<Consejo> buscar(String nombre);
 }

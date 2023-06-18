@@ -64,4 +64,23 @@ public class ConsejoServiceImp implements IConsejoService {
         }
     }
 
+    // Buscar consejos
+    public List<Consejo> buscar(String titulo){
+        if(listaConsejos.getConsejos().size() > 0){
+
+            // Vaciar el array, para una nueva busqueda
+            listaConsejos.getConsejosEncotrados().clear(); 
+
+            for(Consejo consj : listaConsejos.getConsejos()){
+                // Si el nombre en la lista contiene "nombre" se agrega a la lista de
+                // Productos encontrados
+                if(consj.getTitulo().contains(titulo)){
+                    listaConsejos.getConsejosEncotrados().add(consj);
+                }
+            }
+        }
+
+        return listaConsejos.getConsejosEncotrados();
+    }
+
 }

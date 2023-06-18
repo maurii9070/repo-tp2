@@ -10,6 +10,15 @@ import ar.edu.unju.fi.model.Consejo;
 @Component
 public class ConsejoLista {
     private List<Consejo> consejos;
+    private List<Consejo> consejosEncotrados;
+
+    public List<Consejo> getConsejosEncotrados() {
+        return consejosEncotrados;
+    }
+
+    public void setConsejosEncotrados(List<Consejo> consejosEncotrados) {
+        this.consejosEncotrados = consejosEncotrados;
+    }
 
     public List<Consejo> getConsejos(){
         return consejos;
@@ -29,5 +38,7 @@ public class ConsejoLista {
         consejos.add(new Consejo("Evita los cambios bruscos de temperatura", "/images/perrito_con_calor.jpeg", "Evita las altas temperaturas en verano, dale agua fresca y limpia frecuentemente, evita los ejercicios intensos durante las horas de más calor, no olvides a tu mascota dentro del coche y evita las situaciones de estrés. Recuerda que con el calor los animales puede que no tengan tanto apetito. En invierno, al haber bajas temperaturas los animales necesitan ingerir más cantidad de energía por lo que puede aumentar su apetito, así que reparte las comidas para evitar sobrecargar su sistema digestivo."));
 
         consejos.add(new Consejo("Visitar regularmente el veterinario", "/images/veterinario.webp", "En la primer visita de nuestra mascota al veterinario, este se encargara de revisar su estadode salud y descartar cualquier patologia, ademas de establecer el plan de vacunacion y escoger las vacunas adecuadas para cada animal, segun el riesgo de exposicion a ciertas enfermedades y la zona de residencia. Debido a esto, no existe un calendario de vacunacion unico."));
+
+        consejosEncotrados = new ArrayList<Consejo>();
     }
 }

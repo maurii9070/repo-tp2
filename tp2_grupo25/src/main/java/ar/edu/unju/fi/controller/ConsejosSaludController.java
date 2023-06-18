@@ -26,6 +26,26 @@ public class ConsejosSaludController {
     @GetMapping("/listado") // entramos al listado e imprimimos los consejos guardados en lista
     public String getConsejosSaludPage(Model model){
         model.addAttribute("consejos", consejoService.getListaConsejo());
+
+        model.addAttribute("consejo", consejoService.getConsejo());
+        return "consejosdesalud";
+    }
+
+    /* 
+    Para la busqueda obtenemos del objeto consejo el titulo.
+    Realizamos la busqueda por titulo
+ */
+    @PostMapping("/buscar")
+    public String buscarProducto(@ModelAttribute("consejo") Consejo consejo, Model model){
+        //ModelAndView modelView = new ModelAndView("sucursales");
+
+        Boolean buscar = true;
+        
+
+        model.addAttribute("consejosEncontrados", consejoService.buscar(consejo.getTitulo()));        
+        model.addAttribute("buscar", buscar);
+
+
         return "consejosdesalud";
     }
 
