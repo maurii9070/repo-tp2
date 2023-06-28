@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unju.fi.entity.Sucursal;
 import ar.edu.unju.fi.listas.SucursalLista;
-import ar.edu.unju.fi.model.Sucursal;
 import ar.edu.unju.fi.service.ISucursalService;
 
 @Service
