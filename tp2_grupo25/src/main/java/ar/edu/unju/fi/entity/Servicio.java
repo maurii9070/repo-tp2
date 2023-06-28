@@ -2,21 +2,39 @@ package ar.edu.unju.fi.entity;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 
 @Component
+@Entity
+@Table(name = "Servicios")
 public class Servicio {
-    // Validaciones
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "serv_id")
+    private Long id;
+
+    @Column(name = "serv_mascota", length = 10, nullable = false)
     @NotEmpty(message = "El campo no puede estar vacio")
     private String nombreMascota;
 
+    @Column(name = "serv_duenio", length = 10, nullable = false)
     @NotEmpty(message = "El campo no puede estar vacio")
     private String nombreDuenio;
 
+    @Column(name = "serv_dia", length = 10, nullable = false)
     private String diaPaseo;
 
+    @Column(name = "serv_paseador", length = 10, nullable = false)
     private String paseadorNombre;
 
+    @Column(name = "serv_horario", length = 10, nullable = false)
     @NotEmpty(message = "Debe seleccionar un horario")
     private String horarioPaseo;
 
