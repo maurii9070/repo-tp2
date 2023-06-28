@@ -2,6 +2,12 @@ package ar.edu.unju.fi.entity;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -10,20 +16,32 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 
 @Component
+@Entity
+@Table(name = "productos")
 public class Producto {
-	// Agregando validaciones
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "prod_id")
+	private Long id;
+
+	@Column(name = "prod_nombre", length = 20, nullable = false)
     @NotEmpty(message="Nombre no puede estar vacio")
     private String nombre;
 
+	@Column(name = "prod_codigo", length = 10, nullable = false)
     @Positive(message = "El codigo debe ser positivo")
     private int codigo;
 
+	@Column(name = "prod_precio", length = 10, nullable = false)
     @Positive(message = "El precio debe ser positivo")
     private float precio;
 
+	@Column(name = "prod_categoria", length = 10, nullable = false)
     @NotBlank(message = "Debe seleccionar una categoria")
     private String categoria;
 
+	@Column(name = "prod_descuento", length = 5, nullable = false)
     @Min(value = 0, message = "El valor minimo del descuento es 0")
     @Max(value = 50, message = "El valor maximo del descuento es de %50")
     @PositiveOrZero(message = "El descuento debe ser cero o positivo")
